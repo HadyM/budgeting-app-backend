@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Welcome to the budgeting App!");
+  res.send(`<h1>Welcome to the budgeting App!</h1>`);
 });
 
 app.use("/transactions", transactionsController);
@@ -25,7 +25,7 @@ app.get("*", (req, res) => {
   res
     .status(404)
     .send(
-      `<h1>404 Page Not Found!</h1> <br/> <img src="https://i0.wp.com/www.additudemag.com/wp-content/uploads/2020/10/Budgeting_1920x1080.jpg?resize=1280%2C720px&ssl=1" alt="budget" />`,
+      `<h1>404 Page Not Found!</h1> <img src="https://i0.wp.com/www.additudemag.com/wp-content/uploads/2020/10/Budgeting_1920x1080.jpg?resize=1280%2C720px&ssl=1" alt="budget" />`,
     );
 });
 module.exports = app;
