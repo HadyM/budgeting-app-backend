@@ -38,7 +38,7 @@ transaction.get("/total", (req, res) => {
 transaction.get("/:index", (req, res) => {
   const { index } = req.params;
   if (transArray[index]) {
-    res.status(200).json({ success: true, payload: transArray[index] });
+    res.status(200).json(transArray[index]);
   } else {
     res.redirect("/404");
   }
@@ -46,14 +46,14 @@ transaction.get("/:index", (req, res) => {
 
 transaction.post("/", checkTransaction, (req, res) => {
   transArray.push(req.body);
-  res.json({ success: true, payload: transArray[transArray.length - 1] });
+  res.json(transArray[transArray.length - 1]);
 });
 
 transaction.put("/:index", (req, res) => {
   const { index } = req.params;
   if (transArray[index]) {
     transArray[index] = req.body;
-    res.status(200).json({ success: true, payload: transArray[index] });
+    res.status(200).json(transArray[index]);
   } else {
     res.redirect("/404");
   }
@@ -63,7 +63,7 @@ transaction.delete("/:index", (req, res) => {
   const { index } = req.params;
   if (transArray[index]) {
     const deleted = transArray.splice(index, 1);
-    res.status(200).json({ success: true, payload: deleted[0] });
+    res.status(200).json(deleted[0]);
   } else {
     res.redirect("/404");
   }
